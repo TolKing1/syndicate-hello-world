@@ -8,7 +8,6 @@ import com.syndicate.deployment.annotations.lambda.LambdaUrlConfig;
 import com.syndicate.deployment.model.DeploymentRuntime;
 import com.syndicate.deployment.model.RetentionSetting;
 import com.syndicate.deployment.model.lambda.url.AuthType;
-import com.syndicate.deployment.model.lambda.url.InvokeMode;
 import com.task02.handler.RouteHandler;
 
 import java.util.Map;
@@ -22,8 +21,7 @@ import java.util.Map;
 	logsExpiration = RetentionSetting.SYNDICATE_ALIASES_SPECIFIED
 )
 @LambdaUrlConfig(
-		authType = AuthType.NONE,
-		invokeMode = InvokeMode.BUFFERED
+		authType = AuthType.NONE
 )
 public class HelloFunctionUrl implements RequestHandler<APIGatewayV2HTTPEvent, Map<String, Object>> {
 	private final RouteHandler routeHandler = new RouteHandler();
