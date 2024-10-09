@@ -11,7 +11,7 @@ import com.syndicate.deployment.model.RetentionSetting;
 import com.task02.handler.RouteHandler;
 
 @LambdaHandler(
-    lambdaName = "hello-function-url",
+    lambdaName = "hello_world",
 	roleName = "hello-function-url-role",
 	isPublishVersion = true,
 	runtime = DeploymentRuntime.JAVA17,
