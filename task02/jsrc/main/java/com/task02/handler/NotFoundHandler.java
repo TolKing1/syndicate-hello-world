@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class NotFoundHandler implements Handler {
     @Override
-    public Map<String, Map<String, String>> handle(APIGatewayV2HTTPEvent requestEvent) {
+    public Map<String, String> handle(APIGatewayV2HTTPEvent requestEvent) {
         String message = String.format("Bad request syntax or unsupported method. Request path: %s. HTTP method: %s",
                 requestEvent.getRequestContext().getHttp().getPath(),
                 requestEvent.getRequestContext().getHttp().getMethod());

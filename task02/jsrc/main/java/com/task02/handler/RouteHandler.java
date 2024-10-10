@@ -13,7 +13,7 @@ public class  RouteHandler {
         handlers.put(new RouteKey("GET", "/hello"), new GetHelloHandler());
     }
 
-    public Map<String, Map<String, String>> handleRequest(APIGatewayV2HTTPEvent requestEvent) {
+    public Map<String, String> handleRequest(APIGatewayV2HTTPEvent requestEvent) {
         RouteKey routeKey = new RouteKey(getMethod(requestEvent), getPath(requestEvent));
         Handler handler = handlers.getOrDefault(routeKey, new NotFoundHandler());
         return handler.handle(requestEvent);

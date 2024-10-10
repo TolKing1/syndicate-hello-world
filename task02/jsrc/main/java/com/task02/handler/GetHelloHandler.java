@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class GetHelloHandler implements Handler {
     @Override
-    public Map<String, Map<String, String>> handle(APIGatewayV2HTTPEvent requestEvent) {
+    public Map<String, String> handle(APIGatewayV2HTTPEvent requestEvent) {
         return ResponseBuilder.buildResponse(200, "Hello from lambda");
     }
 }
