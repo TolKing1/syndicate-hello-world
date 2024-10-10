@@ -5,5 +5,5 @@ import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPEvent;
 import java.util.Map;
 
 public interface Handler {
-    Map<String, String> handle(APIGatewayV2HTTPEvent requestEvent);
+    Map<String, Object> handle(APIGatewayV2HTTPEvent requestEvent);
 }
