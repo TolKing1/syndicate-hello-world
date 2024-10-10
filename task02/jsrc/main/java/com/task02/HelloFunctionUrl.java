@@ -20,12 +20,12 @@ import java.util.Map;
 @LambdaUrlConfig(
 		authType = AuthType.NONE
 )
-public class HelloFunctionUrl implements RequestHandler<APIGatewayV2HTTPEvent, Map<String, Object>> {
+public class HelloFunctionUrl implements RequestHandler<APIGatewayV2HTTPEvent, Map<String, Map<String, String>>> {
 	private final RouteHandler routeHandler = new RouteHandler();
 
 
 	@Override
-	public Map<String, Object> handleRequest(APIGatewayV2HTTPEvent apiGatewayV2HTTPEvent, Context context) {
+	public Map<String, Map<String, String>> handleRequest(APIGatewayV2HTTPEvent apiGatewayV2HTTPEvent, Context context) {
 		return routeHandler.handleRequest(apiGatewayV2HTTPEvent);
 	}
 }
