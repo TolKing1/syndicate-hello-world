@@ -22,7 +22,6 @@ public class HelloLambda implements RequestHandler<APIGatewayProxyRequestEvent, 
 
 	@Override
 	public Map<String, Object> handleRequest(APIGatewayProxyRequestEvent requestEvent, Context context) {
-
 		return ResponseBuilder.buildResponse(200, "Hello from Lambda");
 	}
 }
