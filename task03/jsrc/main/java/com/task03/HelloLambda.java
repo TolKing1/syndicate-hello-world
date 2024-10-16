@@ -12,7 +12,7 @@ import com.task03.handler.RouteHandler;
 import java.util.Map;
 
 @LambdaHandler(
-    lambdaName = "hello_lambda",
+    lambdaName = "hello_world",
 	roleName = "hello_lambda-role",
 	isPublishVersion = true,
 	aliasName = "${lambdas_alias_name}",
