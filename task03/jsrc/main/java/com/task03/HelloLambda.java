@@ -27,6 +27,10 @@ public class HelloLambda implements RequestHandler<APIGatewayV2HTTPEvent, Map<St
 
 	@Override
 	public Map<String, Object> handleRequest(APIGatewayV2HTTPEvent apiGatewayV2HTTPEvent, Context context) {
+		if (apiGatewayV2HTTPEvent == null || apiGatewayV2HTTPEvent.getRequestContext().getHttp() == null) {
+			throw new IllegalArgumentException("Event or HTTP method cannot be null");
+		}
+
 		return routeHandler.handleRequest(apiGatewayV2HTTPEvent);
 	}
 }
