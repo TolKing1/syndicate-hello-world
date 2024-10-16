@@ -7,7 +7,7 @@ import com.syndicate.deployment.annotations.lambda.LambdaHandler;
 import com.syndicate.deployment.annotations.lambda.LambdaUrlConfig;
 import com.syndicate.deployment.model.RetentionSetting;
 import com.syndicate.deployment.model.lambda.url.AuthType;
-import com.task03.handler.RouteHandler;
+import com.task03.util.ResponseBuilder;
 
 import java.util.Map;
 
@@ -23,14 +23,10 @@ import java.util.Map;
 )
 public class HelloLambda implements RequestHandler<APIGatewayV2HTTPEvent, Map<String, Object>> {
 
-	private final RouteHandler routeHandler = new RouteHandler();
 
 	@Override
 	public Map<String, Object> handleRequest(APIGatewayV2HTTPEvent apiGatewayV2HTTPEvent, Context context) {
-		if (apiGatewayV2HTTPEvent == null || apiGatewayV2HTTPEvent.getRequestContext().getHttp() == null) {
-			throw new IllegalArgumentException("Event or HTTP method cannot be null");
-		}
 
-		return routeHandler.handleRequest(apiGatewayV2HTTPEvent);
+		return ResponseBuilder.buildResponse(200, "{\"statusCode\": 200, \"message\": \"Hello from Lambda\"}");
 	}
 }
