@@ -34,7 +34,7 @@
     "resource_type": "iam_role",
     "tags": {}
   },
-  "api-hello-lambda": {
+  "task3_api": {
     "resource_type": "api_gateway",
     "deploy_stage": "learn",
     "dependencies": [],
