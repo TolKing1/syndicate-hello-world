@@ -20,7 +20,7 @@ import org.json.JSONObject;
 @LambdaHandler(
     lambdaName = "api_handler",
 	roleName = "api_handler-role",
-		architecture = Architecture.ARM64,
+		architecture = Architecture.X86_64,
 	runtime = DeploymentRuntime.JAVA17,
 	aliasName = "${lambdas_alias_name}",
 	logsExpiration = RetentionSetting.SYNDICATE_ALIASES_SPECIFIED
