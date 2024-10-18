@@ -41,6 +41,7 @@
             <artifactId>deployment-configuration-annotations</artifactId>
             <version>${syndicate.java.plugin.version}</version>
         </dependency>
+
     </dependencies>
 
     <build>
