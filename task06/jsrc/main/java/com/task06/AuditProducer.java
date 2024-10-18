@@ -27,7 +27,7 @@ import com.task06.service.impl.AuditTableServiceImpl;
 		@EnvironmentVariable(key = "region", value = "${region}"),
 		@EnvironmentVariable(key = "table", value = "${target_table}")
 })
-public class AuditProducer implements RequestHandler<DynamodbEvent, Void> {
+public class AuditProducer implements RequestHandler<DynamodbEvent, String> {
 	private final AuditTableService auditTableService;
 
 
@@ -38,7 +38,7 @@ public class AuditProducer implements RequestHandler<DynamodbEvent, Void> {
 		);
 	}
 
-	public Void handleRequest(DynamodbEvent dynamodbEvent, Context context) {
+	public String handleRequest(DynamodbEvent dynamodbEvent, Context context) {
 		dynamodbEvent.getRecords().forEach(dynamodbStreamRecord -> {
 			switch (dynamodbStreamRecord.getEventName()) {
 				case "INSERT" -> auditTableService.putInsertEvent(dynamodbStreamRecord);
@@ -46,6 +46,6 @@ public class AuditProducer implements RequestHandler<DynamodbEvent, Void> {
 				default -> throw new IllegalStateException("Unexpected value: " + dynamodbStreamRecord.getEventName());
 			}
 		});
-		return null;
+		return "";
 	}
 }
