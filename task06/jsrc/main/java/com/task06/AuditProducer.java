@@ -20,12 +20,11 @@ import com.task06.service.impl.AuditTableServiceImpl;
         logsExpiration = RetentionSetting.SYNDICATE_ALIASES_SPECIFIED
 )
 @DynamoDbTriggerEventSource(
-        targetTable = "${config_table}",
+        targetTable = "Configuration",
         batchSize = 10
 )
 @EnvironmentVariables(value = {
-        @EnvironmentVariable(key = "region", value = "${region}"),
-        @EnvironmentVariable(key = "table", value = "${target_table}")
+        @EnvironmentVariable(key = "region", value = "${region}")
 })
 public class AuditProducer implements RequestHandler<DynamodbEvent, Void> {
     private final AuditTableService auditTableService;
@@ -34,7 +33,7 @@ public class AuditProducer implements RequestHandler<DynamodbEvent, Void> {
     public AuditProducer() {
         this.auditTableService = new AuditTableServiceImpl(
                 System.getenv("region"),
-                System.getenv("table")
+                "cmtr-2cd95cf2-Audit"
         );
     }
 
