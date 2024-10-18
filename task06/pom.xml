@@ -6,7 +6,7 @@
 
     <groupId>task06-group</groupId>
     <artifactId>task06</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
 
     <properties>
         <maven-shade-plugin.version>3.5.2</maven-shade-plugin.version>
