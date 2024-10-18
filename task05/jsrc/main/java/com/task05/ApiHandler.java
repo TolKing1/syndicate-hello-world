@@ -42,9 +42,9 @@ public class ApiHandler implements RequestHandler<APIGatewayProxyRequestEvent, A
 
 
 	public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent request, Context context) {
-		context.getLogger().log("Receiving request: %s".formatted(request));
+//		context.getLogger().log("Receiving request: %s".formatted(request));
 		JSONObject requestBody = JsonUtil.convertJsonToJsonObject(request.getBody());
-		context.getLogger().log("Getting body: %s".formatted(requestBody));
+//		context.getLogger().log("Getting body: %s".formatted(requestBody));
 
         Event event = eventTableService.putItem(
 				requestBody.getInt("principalId"),
