@@ -7,14 +7,10 @@
             "logs:CreateLogGroup",
             "logs:CreateLogStream",
             "logs:PutLogEvents",
-            "dynamodb:GetItem",
-            "dynamodb:Query",
-            "dynamodb:PutItem",
-            "dynamodb:Batch*",
-            "dynamodb:DeleteItem",
             "ssm:PutParameter",
             "ssm:GetParameter",
-            "kms:Decrypt"
+            "kms:Decrypt",
+            "dynamodb:*"
           ],
           "Effect": "Allow",
           "Resource": "*"
@@ -42,6 +38,10 @@
     "write_capacity": 1,
     "global_indexes": [],
     "autoscaling": [],
+    "stream_specification": {
+      "stream_enabled": true,
+      "stream_view_type": "NEW_AND_OLD_IMAGES"
+    },
     "tags": {}
   },
   "Audit": {

@@ -7,6 +7,7 @@ import com.syndicate.deployment.annotations.environment.EnvironmentVariable;
 import com.syndicate.deployment.annotations.environment.EnvironmentVariables;
 import com.syndicate.deployment.annotations.events.DynamoDbTriggerEventSource;
 import com.syndicate.deployment.annotations.lambda.LambdaHandler;
+import com.syndicate.deployment.model.DeploymentRuntime;
 import com.syndicate.deployment.model.RetentionSetting;
 import com.task06.service.AuditTableService;
 import com.task06.service.impl.AuditTableServiceImpl;
@@ -15,6 +16,7 @@ import com.task06.service.impl.AuditTableServiceImpl;
     lambdaName = "audit_producer",
 	roleName = "audit_producer-role",
 	aliasName = "${lambdas_alias_name}",
+	runtime = DeploymentRuntime.JAVA17,
 	logsExpiration = RetentionSetting.SYNDICATE_ALIASES_SPECIFIED
 )
 @DynamoDbTriggerEventSource(
