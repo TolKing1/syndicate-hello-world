@@ -13,39 +13,39 @@ import com.task06.service.AuditTableService;
 import com.task06.service.impl.AuditTableServiceImpl;
 
 @LambdaHandler(
-    lambdaName = "audit_producer",
-	roleName = "audit_producer-role",
-	aliasName = "${lambdas_alias_name}",
-	runtime = DeploymentRuntime.JAVA17,
-	logsExpiration = RetentionSetting.SYNDICATE_ALIASES_SPECIFIED
+        lambdaName = "audit_producer",
+        roleName = "audit_producer-role",
+        aliasName = "${lambdas_alias_name}",
+        runtime = DeploymentRuntime.JAVA17,
+        logsExpiration = RetentionSetting.SYNDICATE_ALIASES_SPECIFIED
 )
 @DynamoDbTriggerEventSource(
-		targetTable = "${config_table}",
-		batchSize = 10
+        targetTable = "${config_table}",
+        batchSize = 10
 )
 @EnvironmentVariables(value = {
-		@EnvironmentVariable(key = "region", value = "${region}"),
-		@EnvironmentVariable(key = "table", value = "${target_table}")
+        @EnvironmentVariable(key = "region", value = "${region}"),
+        @EnvironmentVariable(key = "table", value = "${target_table}")
 })
 public class AuditProducer implements RequestHandler<DynamodbEvent, String> {
-	private final AuditTableService auditTableService;
+    private final AuditTableService auditTableService;
 
 
-	public AuditProducer() {
-		this.auditTableService = new AuditTableServiceImpl(
-				System.getenv("region"),
-				System.getenv("table")
-		);
-	}
+    public AuditProducer() {
+        this.auditTableService = new AuditTableServiceImpl(
+                System.getenv("region"),
+                System.getenv("table")
+        );
+    }
 
-	public String handleRequest(DynamodbEvent dynamodbEvent, Context context) {
-		dynamodbEvent.getRecords().forEach(dynamodbStreamRecord -> {
-			switch (dynamodbStreamRecord.getEventName()) {
-				case "INSERT" -> auditTableService.putInsertEvent(dynamodbStreamRecord);
-				case "MODIFY" -> auditTableService.putModifyEvent(dynamodbStreamRecord);
-				default -> throw new IllegalStateException("Unexpected value: " + dynamodbStreamRecord.getEventName());
-			}
-		});
-		return "";
-	}
+    public String handleRequest(DynamodbEvent dynamodbEvent, Context context) {
+        dynamodbEvent.getRecords().forEach(dynamodbStreamRecord -> {
+            switch (dynamodbStreamRecord.getEventName()) {
+                case "INSERT" -> auditTableService.putInsertEvent(dynamodbStreamRecord);
+                case "MODIFY" -> auditTableService.putModifyEvent(dynamodbStreamRecord);
+                default -> throw new IllegalStateException("Unexpected value: " + dynamodbStreamRecord.getEventName());
+            }
+        });
+        return "";
+    }
 }
