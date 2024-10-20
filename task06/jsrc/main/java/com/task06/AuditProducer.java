@@ -33,7 +33,7 @@ public class AuditProducer implements RequestHandler<DynamodbEvent, Void> {
     public AuditProducer() {
         this.auditTableService = new AuditTableServiceImpl(
                 System.getenv("region"),
-                "cmtr-2cd95cf2-Audit"
+                "cmtr-2cd95cf2-Audit-test"
         );
     }
 
