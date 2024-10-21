@@ -62,6 +62,6 @@ public class AuditTableServiceImpl implements AuditTableService {
     private static void putModificationEvent(DynamodbEvent.DynamodbStreamRecord record, Map<String, AttributeValue> auditEvent) {
         auditEvent.put("oldValue", new AttributeValue().withN(record.getDynamodb().getOldImage().get("value").getN()));
         auditEvent.put("newValue", new AttributeValue().withN(record.getDynamodb().getNewImage().get("value").getN()));
-        auditEvent.put("updatedValue", new AttributeValue().withS("value"));
+        auditEvent.put("updatedAttribute", new AttributeValue().withS("value"));
     }
 }
