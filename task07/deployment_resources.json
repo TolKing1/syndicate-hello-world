@@ -28,22 +28,7 @@
       "Statement": [
         {
           "Action": [
-            "s3:PutObject"
-          ],
-          "Resource": "*",
-          "Effect": "Allow"
-        }
-      ]
-    }
-  },
-  "eventsPolicy": {
-    "resource_type": "iam_policy",
-    "policy_content": {
-      "Version": "2012-10-17",
-      "Statement": [
-        {
-          "Action": [
-            "events:ListRules"
+            "s3:*"
           ],
           "Resource": "*",
           "Effect": "Allow"
@@ -56,8 +41,7 @@
     "principal_service": "lambda",
     "custom_policies": [
       "lambda-basic-execution",
-      "PutFilesToS3",
-      "eventsPolicy"
+      "PutFilesToS3"
     ],
     "resource_type": "iam_role",
     "tags": {}
