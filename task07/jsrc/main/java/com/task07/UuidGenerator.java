@@ -42,7 +42,6 @@ public class UuidGenerator implements RequestHandler<ScheduledEvent, String> {
 
 	public String handleRequest(ScheduledEvent event, Context context) {
 		LambdaLogger logger = context.getLogger();
-		s3client.createBucket(BUCKET_NAME);
 		logger.log( " Bucket created " );
 		try
 		{
