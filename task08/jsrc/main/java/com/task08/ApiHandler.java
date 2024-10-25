@@ -19,6 +19,7 @@ import com.syndicate.deployment.model.lambda.url.InvokeMode;
     lambdaName = "api_handler",
 	roleName = "api_handler-role",
 	aliasName = "${lambdas_alias_name}",
+	layers = {"api-layer"},
 	logsExpiration = RetentionSetting.SYNDICATE_ALIASES_SPECIFIED
 )
 @LambdaLayer(
