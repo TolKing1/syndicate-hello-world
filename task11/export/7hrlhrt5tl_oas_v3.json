@@ -17,6 +17,8 @@
   "paths": {
     "/signup": {
       "post": {
+        "summary": "Create a new user",
+        "description": "This endpoint allows you to create a new user by providing details such as first name, last name, email, and password.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -64,6 +66,8 @@
     },
     "/signin": {
       "post": {
+        "summary": "Authenticate a user",
+        "description": "This endpoint allows a user to sign in by providing their email and password. If the credentials are valid, an access token is returned.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -112,6 +116,8 @@
     },
     "/tables": {
       "get": {
+        "summary": "Retrieve full list of tables",
+        "description": "This endpoint returns a list of all tables along with details such as ID, number, capacity, if it is a VIP table, and the minimum order required (if any).",
         "security": [
           {
             "authorizer": []
@@ -170,6 +176,8 @@
         }
       },
       "post": {
+        "summary": "Create a new table",
+        "description": "This endpoint allows for the creation of a new table by specifying its ID, number, places, and whether it is a VIP table.",
         "security": [
           {
             "authorizer": []
@@ -235,6 +243,8 @@
     },
     "/tables/{tableId}": {
       "get": {
+        "summary": "Retrieve table details",
+        "description": "This endpoint returns details about a specific table identified by {tableId}, including its ID, number, capacity, if it is a VIP table, and optionally, the minimum order required to book it.",
         "security": [
           {
             "authorizer": []
@@ -297,6 +307,8 @@
     },
     "/reservations": {
       "post": {
+        "summary": "Create a reservation",
+        "description": "This endpoint allows for the creation of a new reservation by specifying the table number, client name, phone number, date, and time slot.",
         "security": [
           {
             "authorizer": []
@@ -361,6 +373,8 @@
         }
       },
       "get": {
+        "summary": "Retrieve list of reservations",
+        "description": "This endpoint returns a list of all reservations, including details such as the table number, client name, phone number, date, and time slot.",
         "security": [
           {
             "authorizer": []
